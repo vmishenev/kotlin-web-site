@@ -124,33 +124,39 @@ Kotlin types. The compiler supports several flavors of nullability annotations, 
 
 You can find the full list in the [Kotlin compiler source code](https://github.com/JetBrains/kotlin/blob/master/core/compiler.common.jvm/src/org/jetbrains/kotlin/load/java/JvmAnnotationNames.kt).
 
-### Annotating type parameters
+### Annotating type arguments and parameters
 
-You can annotate type arguments of generic types to provide nullability information for them as well.
+You can annotate type arguments and parameters of generic types to provide nullability information for them as well.
 For example, consider these annotations on a Java declaration:
 
 ```java
 @NotNull
-Set<@NotNull String> toSet(@NotNull Collection<@NotNull String> elements) { ... }
+<T> Collection<@NotNull String> collectNames(@NotNull Collection<@NotNull T> elements) { ... }
 ```
 
 It leads to the following signature seen in Kotlin:
 
 ```kotlin
-fun toSet(elements: (Mutable)Collection<String>) : (Mutable)Set<String> { ... }
+fun <T> collectNames(elements: (Mutable)Collection<T>) : (Mutable)Collection<String> { ... }
 ```
 
-Note the `@NotNull` annotations on `String` type arguments. Without them, you get platform types in the type arguments:
+Note the `@NotNull` annotations on `T` type parameter and `String` type argument. Without them, you get platform types:
 
 ```kotlin
-fun toSet(elements: (Mutable)Collection<String!>) : (Mutable)Set<String!> { ... }
+fun <T> collectNames(elements: (Mutable)Collection<T!>) : (Mutable)Collection<String!> { ... }
 ```
 
-Annotating type arguments works with Java 8 target or higher and requires the nullability annotations to support the
+Kotlin also supports: 
+- Nullability annotations on bounds of type parameters: `Collection<T extends @Nullable Number>` becomes 
+`(Mutable)Collection<T : Number?>!`
+- Nullability annotations on type arguments of base classes and interfaces
+
+Annotating type arguments and parameters works with Java 8 target or higher and requires the nullability annotations to support the
 `TYPE_USE` target (`org.jetbrains.annotations` supports this in version 15 and above).
 
->Due to the current technical limitations, the IDE does not correctly recognize these annotations on
->type arguments in compiled Java libraries that are used as dependencies.
+> Note: If the nullability annotation supports multiple targets applicable to a type along with the `TYPE_USE` target, then
+> `TYPE_USE` has a higher priority. For example, if `@Nullable` has both `TYPE_USE` and `METHOD` targets, the Java method 
+> signature `@Nullable String[] f()` becomes `fun f(): Array<String?>!` in Kotlin.
 >
 {type="note"}
 
@@ -500,8 +506,6 @@ val javaObj = JavaArrayExample()
 val array = intArrayOf(0, 1, 2, 3)
 javaObj.removeIndicesVarArg(*array)
 ```
-
-It's currently not possible to pass `null` to a method that is declared as varargs.
 
 ## Operators
 
