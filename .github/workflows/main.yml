@@ -50,25 +50,12 @@ jobs:
       - name: Run a docker with compiler-server
         working-directory: ./verifier
         run: ./gradlew dockerRun
-      - name: Run verifier
-        working-directory: ./verifier
-        run: ./client/build/install/client/bin/client collect -r https://github.com/${{github.repository}} -f kotlin -out snippets
-      
-      - name: 'Upload Artifact'
-        uses: actions/upload-artifact@v2
-        with:
-          name: extracted-snippets
-          path: ./verifier/snippets
-          retention-days: 5
-      
+        
       - name: Checkout pusher
         uses: actions/checkout@v2
         with:
           repository: vmishenev/kotlin-samples-pusher
           path: pusher
-          
-      - name: Move a file
-        run: mv ./verifier/snippets ./pusher/snippets
         
       - name: Grant execute permission for gradlew
         run: chmod +x ./pusher/gradlew
@@ -81,10 +68,4 @@ jobs:
 
       - name: Run pusher
         working-directory: ./pusher
-        run: ./build/install/kotlin-samples-pusher/bin/kotlin-samples-pusher -in snippets -r https://github.com/vmishenev/kotlin-compiler-server -username ${{ secrets.TOKEN }} -path src/test/resources/test-compile-data/kotlin-web-site
-        
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+        run: ./build/install/kotlin-samples-pusher/bin/kotlin-samples-pusher -r https://github.com/${{github.repository}} -f kotlin -pr https://github.com/vmishenev/kotlin-compiler-server -username ${{ secrets.TOKEN }} -path src/test/resources/test-compile-data/kotlin-web-site
