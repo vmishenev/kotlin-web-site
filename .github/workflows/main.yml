@@ -53,4 +53,4 @@ jobs:
 
       - name: Run pusher
         working-directory: ./pusher
-        run: ./build/install/kotlin-samples-pusher/bin/kotlin-samples-pusher -r https://github.com/${{github.repository}} -f kotlin -pr https://github.com/vmishenev/kotlin-compiler-server -username ${{ secrets.TOKEN }} -path src/test/resources/test-compile-data/kotlin-web-site
+        run: ./build/install/kotlin-samples-pusher/bin/kotlin-samples-pusher -r https://github.com/${{github.repository}} -f kotlin -pr https://github.com/vmishenev/kotlin-compiler-server -username ${{ secrets.TOKEN }} -path src/test/resources/test-compile-data/kotlin-web-site -commits ,${{ github.event.after }}
