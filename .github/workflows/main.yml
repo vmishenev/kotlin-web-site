@@ -24,41 +24,26 @@ jobs:
         with:
           path: main
       
-      - name: Checkout verifier
-        uses: actions/checkout@v2
-        with:
-          repository: AlexanderPrendota/kotlin-samples-verifier
-          ref: feature_commits
-          path: verifier
-          
       - name: Run a one-line script
         run: echo ${{ join(github.event.commits.*.id, ' ' ) }}
         
-      - name: Set up JDK 1.8
+      - name: Set up JDK
         uses: actions/setup-java@v1
         with:
           java-version: 15
       
-      - name: Grant execute permission for gradlew
-        run: chmod +x ./verifier/gradlew
-      - name: Build with Gradle
-        working-directory: ./verifier
-        run: |
-             ./gradlew build -x test
-             ./gradlew installDist
-        
-      - name: Run a docker with compiler-server
-        working-directory: ./verifier
-        run: ./gradlew dockerRun
-        
       - name: Checkout pusher
         uses: actions/checkout@v2
         with:
           repository: vmishenev/kotlin-samples-pusher
           path: pusher
-        
+          
       - name: Grant execute permission for gradlew
         run: chmod +x ./pusher/gradlew
+
+      - name: Run a docker with compiler-server
+        working-directory: ./pusher
+        run: ./gradlew dockerRun
         
       - name: Build with Gradle
         working-directory: ./pusher
