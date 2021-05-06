@@ -16,7 +16,7 @@ jobs:
 
     steps:
     - run: echo ${{ join(github.event.commits.*.id, ' ' ) }}
-    - run: echo ${{ github.event.head.ref }}
+    - run: echo ${{ toJSON(github.event) }}
     - name: Set up JDK 11
       uses: actions/setup-java@v2
       with:
