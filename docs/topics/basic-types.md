@@ -460,15 +460,7 @@ You can iterate over these characters with a `for` loop:
 Strings are immutable. Once you initialize a string, you can't change its value or assign a new value to it.
 All operations that transform strings return their results in a new `String` object, leaving the original string unchanged.
 
-```kotlin
-fun main() {
-//sampleStart
-    val str = "abcd"
-    println(str.toUpperCase()) // Create and print a new String object
-    println(str) // the original string remains the same
-//sampleEnd
-}
-```
+
 
 {kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
