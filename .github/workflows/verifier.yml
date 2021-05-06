@@ -1,12 +1,7 @@
-# This workflow will build a Java project with Gradle
-# For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-gradle
-
 name: Verify snippets
 
 on:
   push:
-    branches: [ master ]
-  pull_request:
     branches: [ master ]
 
 jobs:
@@ -16,8 +11,8 @@ jobs:
 
     steps:
     - run: echo ${{ join(github.event.commits.*.id, ' ' ) }}
-    - run: echo ${{ toJSON(github.event) }}
-    - name: Set up JDK 11
+    - run: ls
+    - name: Set up JDK 
       uses: actions/setup-java@v2
       with:
         java-version: '15'
