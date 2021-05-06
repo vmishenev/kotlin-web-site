@@ -26,4 +26,4 @@ jobs:
         push-path: 'src/test/resources/test-compile-data/kotlin-web-site'
         username: '${{ secrets.TOKEN }}'
         start-commit: 'bec251e1a07d846078e29c71f2f7d2944b92773a' #${{ github.event.before }}
-        
+    - run: ls
