@@ -22,7 +22,7 @@ An entry point of a Kotlin application is the `main` function.
 
 ```kotlin
 fun main() {
-    println("Hello world!")
+    println("Hello world2!")
 }
 ```
 {kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
