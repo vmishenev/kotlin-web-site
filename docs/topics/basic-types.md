@@ -573,16 +573,7 @@ ${'$'}9.99
 Arrays in Kotlin are represented by the `Array` class. It has `get` and `set` functions that turn into `[]` by operator overloading conventions,
  and the `size` property, along with other useful member functions:
 
-```kotlin
-class Array<T> private constructor() {
-    val size: Int
-    operator fun get(index: Int): T
-    operator fun set(index: Int, value: T): Unit
 
-    operator fun iterator(): Iterator<T>
-    // ...
-}
-```
 
 To create an array, use the function `arrayOf()` and pass the item values to it, so that `arrayOf(1, 2, 3)` creates an array `[1, 2, 3]`.
 Alternatively, the `arrayOfNulls()` function can be used to create an array of a given size filled with `null` elements.
@@ -613,20 +604,6 @@ Kotlin also has classes that represent arrays of primitive types without boxing 
 `ShortArray`, `IntArray`, and so on. These classes have no inheritance relation to the `Array` class, but they
 have the same set of methods and properties. Each of them also has a corresponding factory function:
 
-```kotlin
-val x: IntArray = intArrayOf(1, 2, 3)
-x[0] = x[1] + x[2]
-```
 
-```kotlin
-// Array of int of size 5 with values [0, 0, 0, 0, 0]
-val arr = IntArray(5)
 
-// e.g. initialise the values in the array with a constant
-// Array of int of size 5 with values [42, 42, 42, 42, 42]
-val arr = IntArray(5) { 42 }
 
-// e.g. initialise the values in the array using a lambda
-// Array of int of size 5 with values [0, 1, 2, 3, 4] (values initialised to their index value)
-var arr = IntArray(5) { it * 1 } 
-```
