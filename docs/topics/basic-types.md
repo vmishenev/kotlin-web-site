@@ -469,9 +469,10 @@ fun main() {
 //sampleEnd
 }
 ```
+
 {kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
-To concatenate strings, use the `+` operator. This also works for concatenating strings with values of other types, as long
+To concatenate strings, use the `+` operator. This also works for concatenating stngs with values of other types, as long
 as the first element in the expression is a string:
 
 ```kotlin
