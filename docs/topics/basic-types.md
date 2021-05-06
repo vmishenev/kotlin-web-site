@@ -454,16 +454,7 @@ val str = "abcd 123"
 Elements of a string are characters that you can access via the indexing operation: `s[i]`.
 You can iterate over these characters with a `for` loop:
 
-```kotlin
-fun main() {
-val str = "abcd"
-//sampleStart
-for (c in str) {
-    println(c)
-}
-//sampleEnd
-}
-```
+
 {kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
 Strings are immutable. Once you initialize a string, you can't change its value or assign a new value to it.
