@@ -451,6 +451,7 @@ Strings in Kotlin are represented by the type `String`. Generally, a string valu
 val str = "abcd 123"
 ```
 
+
 Elements of a string are characters that you can access via the indexing operation: `s[i]`.
 You can iterate over these characters with a `for` loop:
 
