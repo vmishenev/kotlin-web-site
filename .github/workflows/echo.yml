@@ -13,8 +13,8 @@ jobs:
 
     steps:
     - run: echo ${{ github.event_name }}
-    - run: echo "${{ toJson(github.event) }}"
-    - run: echo "${{ toJson(github.event) }}" > event.json
+    - run: echo '${{ toJson(github.event) }}'
+    - run: echo '${{ toJson(github.event) }}' > event.json
     - name: 'Upload Artifact'
       uses: actions/upload-artifact@v2
       with:
