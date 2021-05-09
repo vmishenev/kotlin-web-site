@@ -4,10 +4,7 @@ on:
   schedule:
     # * is a special character in YAML so you have to quote this string
     - cron:  '0/5 * * * *'
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+
 
 jobs:
   build:
@@ -16,10 +13,4 @@ jobs:
 
     steps:
     - run: echo ${{ github.event_name }}
-    - run: echo '${{ toJson(github.event) }}'
-    - run: echo '${{ toJson(github.event) }}' > event.json
-    - name: 'Upload Artifact'
-      uses: actions/upload-artifact@v2
-      with:
-        name: event
-        path: event.json
+
