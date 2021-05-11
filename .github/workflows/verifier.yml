@@ -19,6 +19,7 @@ jobs:
     - name: Run a verifier
       uses: vmishenev/kotlin-samples-pusher@dev
       with:
+        io-event: ''
         repository: 'https://github.com/${{github.repository}}'
         push-repository: 'https://github.com/vmishenev/kotlin-compiler-server'
         tag-filter: '#tag="code" & kotlin-runnable="true"'
