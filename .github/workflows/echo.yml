@@ -1,6 +1,7 @@
 name: Simple echo for test
 
-on:
+on: 
+push
   schedule:
     # * is a special character in YAML so you have to quote this string
     - cron:  '5 3 * * *'
@@ -12,5 +13,5 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - run: echo ${{ github.event_name }}
+    - run: echo "${{ github.event}}"
 
