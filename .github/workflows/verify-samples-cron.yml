@@ -2,7 +2,7 @@ name: Verify samples CRON
 
 on:
   schedule:
-   - cron: '32 * * * *' # 5:30 UTC Mon, Thu
+   - cron: '30 * * * *' # 5:30 UTC Mon, Thu
 jobs:
   build:
     runs-on: ubuntu-latest
