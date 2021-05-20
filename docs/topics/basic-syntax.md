@@ -1,6 +1,7 @@
 [//]: # (title: Basic syntax)
 
 
+
 ## Package definition and imports
 
 Package specification should be at the top of the source file.
