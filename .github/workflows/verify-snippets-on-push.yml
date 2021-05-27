@@ -13,7 +13,7 @@ jobs:
           java-version: '15'
           distribution: 'adopt'
       - name: Run a verifier
-        uses: vmishenev/kotlin-samples-pusher@master
+        uses: vmishenev/kotlin-samples-pusher@compiler-server
         with:
           push-repository: 'https://github.com/vmishenev/kotlin-compiler-server'
           snippet-flags: 'kotlin'
