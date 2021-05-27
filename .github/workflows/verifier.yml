@@ -14,10 +14,10 @@ jobs:
     - name: Set up JDK 
       uses: actions/setup-java@v2
       with:
-        java-version: '15'
+        java-version: '11'
         distribution: 'adopt'
     - name: Run a verifier
-      uses: vmishenev/kotlin-samples-pusher@dev
+      uses: vmishenev/kotlin-samples-pusher@compiler-server
       with:
         io-event: ''
         repository: 'https://github.com/${{github.repository}}'
