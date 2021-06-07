@@ -17,7 +17,7 @@ jobs:
         java-version: '11'
         distribution: 'adopt'
     - name: Run a verifier
-      uses: AlexanderPrendota/kotlin-samples-verifier@ feat-reuse-pr
+      uses: AlexanderPrendota/kotlin-samples-verifier@feat-reuse-pr
       with:
         io-event: ''
         repository: 'https://github.com/${{github.repository}}'
