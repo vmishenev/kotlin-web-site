@@ -17,7 +17,7 @@ jobs:
         java-version: '11'
         distribution: 'adopt'
     - name: Run a verifier
-      uses: vmishenev/kotlin-samples-pusher@compiler-server
+      uses: AlexanderPrendota/kotlin-samples-verifier@ feat-reuse-pr
       with:
         io-event: ''
         repository: 'https://github.com/${{github.repository}}'
