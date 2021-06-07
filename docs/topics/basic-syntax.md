@@ -34,8 +34,8 @@ fun main() {
 Another form of `main` accepts a variable number of `String` arguments. 
 
 ```kotlin
-fun main(args: Array<String>) {
-    println(args.contentToString())
+fun main(args23: Array<String>) {
+    println(args23.contentToString())
 }
 ```
 {kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
