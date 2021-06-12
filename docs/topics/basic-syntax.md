@@ -47,7 +47,7 @@ fun main(args23: Array<String>) {
 ```kotlin
 fun main() {
 //sampleStart
-    print("Hello ")
+    print("Helloffd ")
     print("world!")
 //sampleEnd
 }
